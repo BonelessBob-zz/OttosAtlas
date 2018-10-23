@@ -1,0 +1,31 @@
+{
+  "name": "nedmedtrappene",
+  "version": "1.0.0",
+  "description": "Trappene må NED! De symboliserer klasseskillet! BORT MED DE FORBASKEDE KAPITALISTSVINA!!!!!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BonelessBob/nedMedTrappene.git"
+  },
+  "keywords": [
+    "Kapitalistsvin",
+    "nedMedTrappene",
+    "trapp",
+    "klasseskille"
+  ],
+  "author": "Bob",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BonelessBob/nedMedTrappene/issues"
+  },
+  "homepage": "https://github.com/BonelessBob/nedMedTrappene#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.4"
+  }
+}

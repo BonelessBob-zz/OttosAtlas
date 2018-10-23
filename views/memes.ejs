@@ -1,0 +1,33 @@
+<% include partials/mHeader %>
+
+</style>
+
+<div class="container">
+
+  <header class="jumbotron">
+    <div class="container">
+      <h1>Here's the memes!</h1>
+      <p>Here you can pick and choose from all of our dankest memes!</p>
+      <p>
+        <a class="btn btn-primary btn lg" href="/memes/new">Add New Meme</a>
+      </p>
+    </div>
+  </header>
+
+  <div class="row text-center">
+    <% memes.forEach(function(meme){ %>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="<%= meme.image %>" alt="<%= meme.name %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= meme.name %></h5>
+            <a href="/memes/<%= meme._id %>" class="btn btn-primary">More Info</a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+
+  <a href="/">To homepage! </a>
+</div>
+<% include partials/footer %>

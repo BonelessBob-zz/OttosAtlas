@@ -1,0 +1,59 @@
+<% include partials/nmtHeader %>
+
+<div class="bg-danger">
+  <div class="container">
+    <header>
+      <div class="jumbotron bg-danger text-dark text-center">
+        <h1 class="font-weight-bold display-1">
+          Ned Med Trappene!
+        </h1>
+        <p class="h1">
+          Trappene symboliserer klasseskille!
+        </p>
+      </div>
+    </header>
+  </div>
+
+  <div class="container text-center">
+    <img src="https://farm2.staticflickr.com/1905/45450445121_0ce1d95fef_o.jpg" width="512" height="512" alt="stairs">
+  </div>
+
+  <div class="container">
+    <form action="/nmt" method="post">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="author" placeholder="Name">
+      </div>
+
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <input type="text" class="form-control" name="text" placeholder="Comment">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="container bg-warning text-center">
+    <% comments.forEach(function(comment){ %>
+      <strong><%= comment.author %></strong>
+      <p><%= comment.text %></p>
+    <% }); %>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
+
+<% include partials/footer %>
