@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
 // ----------------MEMEDB ------------------------
 // INDEX - lists all memes
 app.get("/memes", function(req, res) {
-  Meme.find({}, function(err, memes) {
+  Meme.find({"website": "memeDB"}, function(err, memes) {
     if (err) {
       console.log(err);
     }else {
@@ -88,7 +88,7 @@ app.post("/memes/:id", function(req, res) {
 
 //---------------------------------NED MED TRAPPENE---------------------------------------
 app.get("/nmt", function(req, res) {
-  Comment.find({}, function(err, comments) {
+  Comment.find({"website": "nmt"}, function(err, comments) {
     if (err) {
       console.log(err);
     }else {
