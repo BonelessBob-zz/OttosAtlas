@@ -3,13 +3,15 @@ const mongoose    = require('mongoose');
 const bodyParser  = require('body-parser');
 const Comment     = require('./models/comment');
 const Meme        = require('./models/meme');
-const seedMemeDB  = require('./memeSeeds')
+const seedDB  = require('./seeds')
 
-seedMemeDB.seedMemeDB();
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 mongoose.connect("mongodb://localhost/ottosAtlas", {useNewUrlParser: true});
+//seedDB();
+
+
 
 // LANDING PAGE
 app.get("/", function(req, res) {
@@ -24,7 +26,7 @@ app.get("/memes", function(req, res) {
     if (err) {
       console.log(err);
     }else {
-      res.render("memes", {memes: memes});
+      res.render("memeDB/memes", {memes: memes});
     }
   });
 });
@@ -46,7 +48,7 @@ app.post("/memes", function(req, res) {
 
 // NEW - form to create new meme
 app.get("/memes/new", function(req, res) {
-  res.render("new");
+  res.render("memeDB/new");
 });
 
 // SHOW - shows more info about one meme
@@ -55,13 +57,33 @@ app.get("/memes/:id", function(req, res) {
     if (err) {
       console.log(err);
     }else {
-      res.render("show", {meme: foundMeme});
+      res.render("memeDB/show", {meme: foundMeme});
     }
   });
 });
 
-
-
+app.post("/memes/:id", function(req, res) {
+  Meme.findById(req.params.id, function(err, foundMeme) {
+    if (err) {
+      console.log(err);
+      res.redirect("/memes");
+    }else {
+      var website = "memeDB";
+      var author = req.body.author;
+      var text = req.body.text;
+      var newComment = {website: website, author: author, text: text};
+      Comment.create(newComment, function(err, createdComment) {
+        if (err) {
+          console.log(err);
+        }else {
+          foundMeme.comments.push(createdComment);
+          foundMeme.save();
+          res.redirect("/memes/" + foundMeme._id);
+        }
+      });
+    }
+  });
+});
 
 
 //---------------------------------NED MED TRAPPENE---------------------------------------
@@ -71,7 +93,7 @@ app.get("/nmt", function(req, res) {
       console.log(err);
     }else {
       comments.reverse();
-      res.render("index", {comments: comments});
+      res.render("nmt/index", {comments: comments});
     }
   });
 });
@@ -94,6 +116,6 @@ app.post("/nmt", function(req, res) {
   });
 });
 
-app.listen(5001, "localhost", function() {
+app.listen(80, process.env.IP, function() {
   console.log("It has begun!");
 });

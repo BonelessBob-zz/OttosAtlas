@@ -25,24 +25,49 @@ var data = [
   }
 ]
 
-exports.seedMemeDB = function () {
-  //Delete all memes
-  Meme.deleteMany({}, function(err) {
-    if (err) {
-      console.log(err);
-    }else {
-      console.log("----------------REMOVED ALL MEMES----------------");
-      //Create new memes
-      data.forEach(function(seed) {
-        Meme.create(seed, function(err, meme) {
-          if (err) {
+function seedDB(){
+   //Remove all memes
+   Meme.deleteMany({}, function(err){
+        if(err){
             console.log(err);
-          }else {
-            console.log("Added meme " + meme["name"]);
-          }
-        });
-      });
-    }
-  });
+        }else {
 
-};
+          Comment.deleteMany({}, function(err) {
+            if (err) {
+              console.log(err);
+            }else {
+              console.log("-----------REMOVED MEMES AND COMMENTS---------------");
+              //add a few memes
+             data.forEach(function(seed){
+                 Meme.create(seed, function(err, meme){
+                     if(err){
+                         console.log(err)
+                     } else {
+                         console.log("added " + meme["name"]);
+                         //create a comment
+                         Comment.create(
+                             {
+                                 website: "memeDB",
+                                 text: "Damn",
+                                 author: "Bob"
+                             }, function(err, comment){
+                                 if(err){
+                                     console.log(err);
+                                 } else {
+                                     meme.comments.push(comment);
+                                     meme.save();
+                                     console.log("Created new comment");
+                                 }
+                             });
+                     }
+                 });
+             });
+            }
+          });
+
+        }
+
+    });
+    //add a few comments
+}
+module.exports = seedDB;
