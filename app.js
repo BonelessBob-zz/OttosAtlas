@@ -103,7 +103,7 @@ app.post("/nmt", function(req, res) {
   var author = req.body.author;
   var text = req.body.text;
 
-  var newComment = {author: author, text: text};
+  var newComment = {website: "nmt", author: author, text: text};
 
   Comment.create(newComment, function(err, data) {
     if (err) {
