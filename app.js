@@ -9,7 +9,7 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 mongoose.connect("mongodb://localhost/ottosAtlas", {useNewUrlParser: true});
-//seedDB();
+seedDB();
 
 
 
@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
 // ----------------MEMEDB ------------------------
 // INDEX - lists all memes
 app.get("/memes", function(req, res) {
-  Meme.find({"website": "memeDB"}, function(err, memes) {
+  Meme.find({}, function(err, memes) {
     if (err) {
       console.log(err);
     }else {
@@ -88,7 +88,7 @@ app.post("/memes/:id", function(req, res) {
 
 //---------------------------------NED MED TRAPPENE---------------------------------------
 app.get("/nmt", function(req, res) {
-  Comment.find({"website": "nmt"}, function(err, comments) {
+  Comment.find({}, function(err, comments) {
     if (err) {
       console.log(err);
     }else {
