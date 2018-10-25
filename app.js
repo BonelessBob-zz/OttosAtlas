@@ -118,6 +118,6 @@ app.post("/nmt", function(req, res) {
   });
 });
 
-app.listen(5001, "localhost", function() {
+app.listen(80, process.env.IP, function() {
   console.log("It has begun!");
 });
