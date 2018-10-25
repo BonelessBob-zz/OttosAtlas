@@ -7,6 +7,7 @@ const seedDB  = require('./seeds')
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/css"));
 app.set("view engine", "ejs");
 mongoose.connect("mongodb://localhost/ottosAtlas", {useNewUrlParser: true});
 seedDB();
@@ -116,6 +117,6 @@ app.post("/nmt", function(req, res) {
   });
 });
 
-app.listen(80, process.env.IP, function() {
+app.listen(5001, "localhost", function() {
   console.log("It has begun!");
 });
