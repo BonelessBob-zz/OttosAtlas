@@ -1,13 +1,14 @@
 const express     = require('express');
 const mongoose    = require('mongoose');
 const bodyParser  = require('body-parser');
+var path          = require('path');
 const Comment     = require('./models/comment');
 const Meme        = require('./models/meme');
-const seedDB  = require('./seeds')
+const seedDB      = require('./seeds')
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname + "/css"));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", "ejs");
 mongoose.connect("mongodb://localhost/ottosAtlas", {useNewUrlParser: true});
 seedDB();

@@ -1,8 +1,6 @@
 <% include partials/header %>
 
-</style>
-
-<div class="container">
+<div class="container text-center">
 
   <header class="jumbotron">
     <div class="container">
@@ -16,7 +14,7 @@
 
   <div class="row text-center">
     <% memes.forEach(function(meme){ %>
-      <div class="col-lg-3 col-md-3 col-sm-6">
+      <div class="col">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="<%= meme.image %>" alt="<%= meme.name %>">
           <div class="card-body">
