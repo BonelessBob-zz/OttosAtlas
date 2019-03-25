@@ -20,6 +20,36 @@ app.get("/", function(req, res) {
   res.render("landing");
 });
 
+//---------------------------------NED MED TRAPPENE---------------------------------------
+app.get("/nmt", function(req, res) {
+  Comment.find({}, function(err, comments) {
+    if (err) {
+      console.log(err);
+    }else {
+      comments.reverse();
+      res.render("nmt/index", {comments: comments});
+    }
+  });
+});
+
+// CREATE - creates new comment
+app.post("/nmt", function(req, res) {
+
+  var author = req.body.author;
+  var text = req.body.text;
+
+  var newComment = {website: "nmt", author: author, text: text};
+
+  Comment.create(newComment, function(err, data) {
+    if (err) {
+      console.log(err);
+    }else {
+      console.log(data);
+      res.redirect("/nmt");
+
+    }
+  });
+});
 
 // ----------------MEMEDB ------------------------
 // INDEX - lists all memes
@@ -87,37 +117,18 @@ app.post("/memes/:id", function(req, res) {
   });
 });
 
+// ------------------------ PHYSICS ------------------------
 
-//---------------------------------NED MED TRAPPENE---------------------------------------
-app.get("/nmt", function(req, res) {
-  Comment.find({}, function(err, comments) {
-    if (err) {
-      console.log(err);
-    }else {
-      comments.reverse();
-      res.render("nmt/index", {comments: comments});
-    }
-  });
+app.get("/physics", function(req, res) {
+  res.render("physics/physics");
 });
 
-app.post("/nmt", function(req, res) {
+// ------------------------ 404 ------------------------
+app.get("/*", function(req,res){
+  res.render("404");
+})
 
-  var author = req.body.author;
-  var text = req.body.text;
-
-  var newComment = {website: "nmt", author: author, text: text};
-
-  Comment.create(newComment, function(err, data) {
-    if (err) {
-      console.log(err);
-    }else {
-      console.log(data);
-      res.redirect("/nmt");
-
-    }
-  });
-});
-
-app.listen(80, process.env.IP, function() {
+// ------------------------ START SERVER ------------------------
+app.listen(80, "localhost", function() {
   console.log("It has begun!");
 });
