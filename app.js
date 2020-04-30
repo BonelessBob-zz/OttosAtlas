@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", "ejs");
 mongoose.connect("mongodb://localhost/ottosAtlas", {useNewUrlParser: true});
-seedDB();
+//seedDB();
 
 
 
@@ -129,6 +129,6 @@ app.get("/*", function(req,res){
 })
 
 // ------------------------ START SERVER ------------------------
-app.listen(80, "localhost", function() {
+app.listen(80, process.env.IP, function() {
   console.log("It has begun!");
 });
