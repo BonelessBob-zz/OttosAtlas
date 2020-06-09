@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Carl</title>
+    </head>
+    <body>
+            <h1 id = "idTittel"> Bestemoren til Carl</h1>
+            <p>Jeg har bakt kjeks.</p>
+            <button id = "idC"> Anusen til Carl</button>
+            <button id = "idO">Crispy ass-en til Otto</button>
+            <button id = "idH">Sixpacken til Håkon</button>
+            <br><br>
+            <img id = "idRiktigBilde" width="240">
+                 
+        <script> 
+            
+            document.getElementById("idC").addEventListener("click", riktig);
+            
+            function riktig() {
+                
+                document.getElementById("idC").innerHTML = "Riktig";
+                document.getElementById("idRiktigBilde").src = "/images/1STFantastisk/carl.jpg";
+                
+            }
+            
+            
+            document.getElementById("idO").addEventListener("click", feil);
+            document.getElementById("idH").addEventListener("click", feil);
+            
+            function feil(event){
+                if (event.target.id == "idO") {
+                    document.getElementById("idO").innerHTML = "Feil";
+                }
+                else {
+                    document.getElementById("idH").innerHTML = "Feil";
+                }
+                
+            }
+        
+        
+        </script>
+
+    </body>
+</html>

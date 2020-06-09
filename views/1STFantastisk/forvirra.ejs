@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Smakebitkurs</title>
+    <head>
+        <body>
+            <h1 id="idTittel">Hjelp jeg er forvirret</h1>
+            <p>Jeg skjønner ingenting.</p>
+            <h1>Bruh momento</h1>
+            <p>Burde jeg ta IT2?</p>
+            <button id="idN">nei</button>
+            <button id="idJ">Jenna skjønner ingenting</button>
+            <button id="idD">dumbass</button>
+            <br><br>
+            <img src="/images/1STFantastisk/forvirra.jpg" width="365">
+            <p>send fotbilder</p>
+            <p>eg vippsar deg</p>
+            <br><br>
+            <h1>Otto has my UwUs</h1>
+            
+            
+            <script>
+                
+                document.getElementById("idN").addEventListener("click",riktig);
+
+                
+                function riktig() {
+                    
+                    document.getElementById("idN").innerHTML="riktig";
+                  
+                }
+                
+                
+                 document.getElementById("idJ").addEventListener("click",jepp);
+                 document.getElementById("idD").addEventListener("click",jepp);
+                
+                function jepp(event) {
+                    if (event.target.id == "idJ") {
+                        document.getElementById("idJ").innerHTML = "jepp";
+                    }
+                    else {
+                        document.getElementById("idD").innerHTML = "jepp";
+                    }
+                }
+            </script>
+
+        </body>
+</html>

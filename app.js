@@ -135,6 +135,16 @@ app.get("/1STFantastisk/beepboop", function(req, res) {
   res.render("1STFantastisk/beepboop");
 });
 
+// Carl - Viktoria etter smakebit kurs i IT2 2020
+app.get("/1STFantastisk/carl", function(req, res) {
+  res.render("1STFantastisk/carl");
+});
+
+// Forvirra - Jenna etter smakebit kurs i IT2 2020
+app.get("/1STFantastisk/forvirra", function(req, res) {
+  res.render("1STFantastisk/forvirra");
+});
+
 
 // app.get("/1STFantastisk", function(req, res) {
 //   res.render("physics/physics");
