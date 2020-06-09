@@ -123,6 +123,28 @@ app.get("/physics", function(req, res) {
   res.render("physics/physics");
 });
 
+// ------------------------ 1STFantastisk ------------------------
+
+// Index list
+app.get("/1STFantastisk", function(req, res) {
+  res.render("1STFantastisk/index");
+});
+
+// Beepboop - Zoi etter smakebit kurs i IT2 2020
+app.get("/1STFantastisk/beepboop", function(req, res) {
+  res.render("1STFantastisk/beepboop");
+});
+
+
+// app.get("/1STFantastisk", function(req, res) {
+//   res.render("physics/physics");
+// });
+//
+//
+// app.get("/1STFantastisk", function(req, res) {
+//   res.render("physics/physics");
+// });
+
 // ------------------------ 404 ------------------------
 app.get("/*", function(req,res){
   res.render("404");
