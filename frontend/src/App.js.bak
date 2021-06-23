@@ -1,0 +1,41 @@
+  
+import React, {useState} from 'react';
+import * as styles from './main.scss';
+import Toolbar from './components/Toolbar'
+import Homepage from './components/Homepage'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+
+
+
+const App = () => {
+  const [color1, setColor1] = useState(1)
+  const [color2, setColor2] = useState(1)
+  const colors = ["lightblue", "lightyellow", "lightpink", "cornsilk", "lavenderblush", "moccasin", "azure", "floralwhite", "honeydew", "mintcream", "thistle", "palegreen"]
+
+  const changeBg = () => {
+    let i1 = Math.floor(colors.length * Math.random())
+    setColor1(colors[i1])
+    let i2 = Math.floor(colors.length * Math.random())
+    i2 !== i1 ? setColor2(colors[i2]) : setColor2("lightgray")
+  }
+  
+  
+  return(
+    <div className="app" style={{
+      "backgroundImage": `radial-gradient(${color1}, ${color2})`
+    }}>
+      <Router>
+        {/* <Toolbar /> */}
+        <Switch>
+          <Route exact path="/" render={() => <Homepage changeBg={changeBg}/>} />
+        </Switch>
+      </Router>
+    </div>
+  );
+}
+
+export default App;
