@@ -5,4 +5,4 @@ Old: Gammel nettside med tidligere projekter
 <br />
 New: Skal bli en hub for fremtidige projekter, jobbsøknader og hva enn som faller meg inn for øyeblikket
 
-Obs: Nettsiden er nede for øyeblikket grunnet komplett rekonstruksjon av nettsiden i Django med React JS. Dette kan ta en stund
+Obs: Nettsiden er nede for øyeblikket grunnet komplett rekonstruksjon i Django med React JS. Dette kan ta en stund
